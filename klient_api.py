@@ -1,15 +1,15 @@
 import requests
 
-class AirQualityAPIClient:
-    def __init__(self, api_token):
-        self.api_token = api_token
-        self.base_url = "https://api-docs.iqair.com"
+class KlientAPISerwisuJakościPowietrza:
+    def __init__(self, token_api):
+        self.token_api = token_api
+        self.bazowy_adres_url = "https://api-docs.iqair.com"
 
-    def get_air_quality_data(self, city):
-        headers = {"Authorization": f"Bearer {self.api_token}"}
-        params = {"city": city}
-        response = requests.get(f"{self.base_url}/data", headers=headers, params=params)
-        if response.status_code == 200:
-            return response.json()
+    def pobierz_dane_jakości_powietrza(self, miasto):
+        nagłówki = {"Authorization": f"Bearer {self.token_api}"}
+        parametry = {"city": miasto}
+        odpowiedź = requests.get(f"{self.bazowy_adres_url}/data", headers=nagłówki, params=parametry)
+        if odpowiedź.status_code == 200:
+            return odpowiedź.json()
         else:
             return None
